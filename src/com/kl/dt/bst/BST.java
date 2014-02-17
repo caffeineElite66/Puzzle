@@ -55,8 +55,19 @@ public class BST <T extends Comparable<?>> {
 		return true;
 	}
 	
-	public Node find(Integer value) {
-		return new Node(null);
+	public Node find(T data) {
+		return find(root, data);
 	}	
+	
+	private Node find(Node node, T data) {
+		
+		if (node.data.compareTo(data) > 0) {
+			find(node.left, data);
+		} else if (node.data.compareTo(data) < 0) {
+			find(node.right, data);
+		} 
+		Sysmte.out.println("Inside Node is: " + node.data);
+		return node;
+	}
 
 }
