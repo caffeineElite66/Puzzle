@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+
 public class BST <T extends Comparable<?>> {
 	
 	public Node root;
@@ -51,9 +52,20 @@ public class BST <T extends Comparable<?>> {
 		}
 	}
 	
-	public boolean delete(Node node) {
-		return true;
+	public Node delete(T data) {
+		return delete(this.root, data);
 	}
+	
+	private Node delete(Node node, T data) {
+		if (node.data.compareTo(data) < 0) {
+			return delete(node, data);
+		} else if (node.data.compareTo(data) > 0) {
+			return delete(node, data);
+		} else {
+			
+		}
+	}
+	
 	
 	public Node find(T data) {
 		return find(root, data);
@@ -62,11 +74,10 @@ public class BST <T extends Comparable<?>> {
 	private Node find(Node node, T data) {
 		
 		if (node.data.compareTo(data) > 0) {
-			find(node.left, data);
+			return find(node.left, data);
 		} else if (node.data.compareTo(data) < 0) {
-			find(node.right, data);
+			return find(node.right, data);
 		} 
-		Sysmte.out.println("Inside Node is: " + node.data);
 		return node;
 	}
 

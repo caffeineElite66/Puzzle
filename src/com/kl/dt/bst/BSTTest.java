@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.Random;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class BSTTest {
@@ -12,8 +13,12 @@ public class BSTTest {
 	int searchValue;
 	BST bst;
 	
+	@Before
 	public void setUp() {
-		
+		this.ELEMENT_COUNT = 10;
+		bst = new BST<Integer>();
+		bst.insert(10);bst.insert(5);bst.insert(6);bst.insert(3);bst.insert(2);
+		bst.insert(11);bst.insert(25);bst.insert(7);bst.insert(13);bst.insert(15);
 	}
 	
 	@Test
@@ -26,15 +31,10 @@ public class BSTTest {
 		}
 		BTreePrinter.printNode(bst.root);
 		assertEquals(ELEMENT_COUNT, bst.size);
-		
 	}
 
 	@Test
 	public void findTest() {
-		this.ELEMENT_COUNT = 10;
-		bst = new BST<Integer>();
-		bst.insert(10);bst.insert(5);bst.insert(6);bst.insert(3);bst.insert(2);
-		bst.insert(11);bst.insert(25);bst.insert(7);bst.insert(13);bst.insert(15);
 		Node node = bst.find(25);
 		System.out.println("Current note is: " + node.data);
 		assertEquals(25, node.data);
@@ -42,7 +42,9 @@ public class BSTTest {
 	
 	@Test
 	public void deleteTest() {
-		fail("Not implemented yet.");
+		Node node = bst.delete(25);
+		assertEquals(25, node.data);
+		assertEquals(ELEMENT_COUNT - 1, bst.size);
 	}
 
 }
