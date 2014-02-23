@@ -62,7 +62,7 @@ public class BST <T extends Comparable<?>> {
 		} else if (node.data.compareTo(data) > 0) {
 			return delete(node, data);
 		} else {
-			
+			return node;
 		}
 	}
 	
